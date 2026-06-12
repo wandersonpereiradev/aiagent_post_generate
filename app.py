@@ -14,3 +14,15 @@ llm = ChatGroq(
     timeout=None,
     max_retries=2,
 )
+
+## função de geração
+def llm_generate(llm, prompt):
+  template = ChatPromptTemplate.from_messages([
+      ("system", "Você é um especialista em marketing digital com foco em SEO e escrita persuasiva."),
+      ("human", "{prompt}"),
+  ])
+
+  chain = template | llm | StrOutputParser()
+
+  res = chain.invoke({"prompt": prompt})
+  return res
