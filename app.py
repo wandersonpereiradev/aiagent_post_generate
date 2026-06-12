@@ -26,3 +26,16 @@ def llm_generate(llm, prompt):
 
   res = chain.invoke({"prompt": prompt})
   return res
+
+st.set_page_config(page_title = "Gerador de conteúdo 🤖", page_icon="🤖")
+st.title("Gerador de conteúdo")
+
+# Campos do formulário
+topic = st.text_input("Tema:", placeholder="Ex: saúde mental, alimentação saudável, prevenção, etc.")
+platform = st.selectbox("Plataforma:", ['Instagram', 'Facebook', 'LinkedIn', 'Blog', 'E-mail'])
+tone = st.selectbox("Tom:", ['Normal', 'Informativo', 'Inspirador', 'Urgente', 'Informal'])
+length = st.selectbox("Tamanho:", ['Curto', 'Médio', 'Longo'])
+audience = st.selectbox("Público-alvo:", ['Geral', 'Jovens adultos', 'Famílias', 'Idosos', 'Adolescentes'])
+cta = st.checkbox("Incluir CTA")
+hashtags = st.checkbox("Retornar Hashtags")
+keywords = st.text_area("Palavras-chave (SEO):", placeholder="Ex: bem-estar, medicina preventiva...")
